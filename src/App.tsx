@@ -9,7 +9,7 @@ function Header() {
           <span className="text-zinc-400 text-sm">1 / 1 done today</span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-zinc-400 text-sm">May 18 - May 23</span>
+          <span className="text-zinc-400 text-sm items-end">May 18 - May 23</span>
           <div className="flex items-center gap-3">
             <Button text="Prev" />
             <Button text="Next" />
