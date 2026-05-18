@@ -1,11 +1,11 @@
 type ButtonProps = {
-  text: string
-}
+  text: string;
+};
 
-export default function Button(props: ButtonProps) {
+export default function Button({ text }: ButtonProps) {
   return (
     <>
-      <button>{props.text}</button>
+      <button>{text}</button>
     </>
   );
 }
