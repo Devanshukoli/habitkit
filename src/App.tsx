@@ -1,3 +1,5 @@
+import Button from "./components/Button";
+
 function Header() {
   return (
     <>
@@ -9,8 +11,8 @@ function Header() {
         <div className="flex flex-col gap-1">
           <span className="text-zinc-400 text-sm">May 18 - May 23</span>
           <div className="flex items-center gap-3">
-            <button>Prev</button>
-            <button>Next</button>
+            <Button text="Prev" />
+            <Button text="Next" />
           </div>
         </div>
       </header>
