@@ -1,5 +1,10 @@
+import HabitItem from "../components/HabitItem";
+
 const HabitList = () => {
-  const habits = [];
+  const habits = [
+    { id: 1, name: "dev" },
+    { id: 2, name: "kp" },
+  ];
 
   if (habits.length === 0) {
     return (
@@ -14,7 +19,7 @@ const HabitList = () => {
   return (
     <>
       {habits.map((habit) => (
-        <p>{habit}</p>
+        <HabitItem key={habit.id} habit={habit} />
       ))}
     </>
   );
