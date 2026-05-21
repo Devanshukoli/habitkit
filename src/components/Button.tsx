@@ -1,17 +1,16 @@
-type ButtonProps = {
-  children: string;
-  disabled?: boolean;
-};
+import type { ComponentProps } from "react";
 
-export default function Button({ children, disabled = false }: ButtonProps) {
+type ButtonProps = {
+  variant?: "primary" | "secondary" | "ghost-destructive";
+} & ComponentProps<"button">;
+
+export default function Button({ variant =  "primary", ...props }: ButtonProps) {
   return (
     <>
       <button
-        disabled={disabled}
+        {...props}
         className="bg-violet-600 hover:bg-violet-500 transition-colors rounded px-2 py-1 disabled:opacity-30 disabled:cursor-not-allowed"
-      >
-        {children}
-      </button>
+      />
     </>
   );
 }
