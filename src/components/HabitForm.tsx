@@ -1,14 +1,31 @@
+import { useState, type SubmitEvent } from "react";
 import Button from "./Button";
 
 const HabitForm = () => {
+  const [habitName, setHabitName] = useState("");
+
+  const handleChange = (event) => {
+    setHabitName(event.target.value);
+  };
+
+  const handleSubmit = (event: SubmitEvent) => {
+    event.preventDefault()
+    console.log(habitName)
+  }
+
   return (
     <>
-      <form className="flex gap-2">
-        <input className="flex-1 rounded-lg bg-zinc-800 px-4 py-2 outline-none focus-visible:ring-2 focus-visible:ring-violet-500" placeholder="New Habit..."/>
+      <form className="flex gap-2" onSubmit={handleSubmit}>
+        <input
+          value={habitName}
+          onChange={handleChange}
+          className="flex-1 rounded-lg bg-zinc-800 px-4 py-2 outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+          placeholder="New Habit..."
+        />
         <Button className="rounded-lg px-4 py-2 font-medium">Add habit</Button>
       </form>
     </>
-  )
-}
+  );
+};
 
 export default HabitForm;
