@@ -6,10 +6,11 @@ export type Habit = {
 }
 
 type HabitListProps = {
-  habits : Habit[]
+  habits: Habit[],
+  deleteHabit: (id: string) => void;
 }
 
-const HabitList = ({ habits }: HabitListProps) => {
+const HabitList = ({ habits, deleteHabit }: HabitListProps) => {
   
   if (habits.length === 0) {
     return (
@@ -25,7 +26,7 @@ const HabitList = ({ habits }: HabitListProps) => {
     <>
       <div className="flex flex-col gap-3">
         {habits.map((habit) => (
-          <HabitItem key={habit.id} habit={habit} />
+          <HabitItem deleteHabit={ deleteHabit} key={habit.id} habit={habit} />
         ))}
       </div>
     </>
