@@ -8,8 +8,8 @@ type HabitItemProps = {
 
 const HabitItem = ({ habit }: HabitItemProps) => {
   const visibleDate = eachDayOfInterval({
-    start: startOfWeek(new Date()),
-    end: endOfWeek(new Date()),
+    start: startOfWeek(new Date(), { weekStartsOn: 1 }),
+    end: endOfWeek(new Date(), {weekStartsOn: 1}),
   });
 
   return (
@@ -24,7 +24,7 @@ const HabitItem = ({ habit }: HabitItemProps) => {
         </div>
         <div className="flex gap-1.5">
           {visibleDate.map((date) => (
-            <Button key={date.toISOString()}>
+            <Button key={date.toISOString()} disabled>
               <span className="font-medium">{format(date, "EEE")}</span>
               <span>{format(date, "d")}</span>
             </Button>
