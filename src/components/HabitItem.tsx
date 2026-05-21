@@ -6,6 +6,8 @@ type HabitItemProps = {
 };
 
 const HabitItem = ({ habit }: HabitItemProps) => {
+  const visibleDate = [new Date()]
+
   return (
     <>
       <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
@@ -14,7 +16,15 @@ const HabitItem = ({ habit }: HabitItemProps) => {
             <span className="font-medium">{habit.name}</span>
             <span className="font-sm text-amber-400">🔥 3</span>
           </div>
-          <Button text="Delete"/>
+          <Button>Delete</Button>
+        </div>
+        <div className="flex gap-1.5">
+          {visibleDate.map(date => (
+            <Button key={date.toISOString()}>
+              <span className="font-medium">Mon</span>  
+              <span>2</span>  
+            </Button>
+            ))}
         </div>
       </div>
     </>
