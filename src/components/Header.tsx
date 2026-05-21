@@ -13,8 +13,8 @@ const Header = () => {
             May 18 - May 23
           </span>
           <div className="flex items-center gap-3">
-            <Button text="Prev" />
-            <Button text="Next" />
+            <Button>Prev</Button>
+            <Button>Next</Button>
           </div>
         </div>
       </header>
