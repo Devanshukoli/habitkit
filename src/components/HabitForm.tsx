@@ -10,7 +10,9 @@ const HabitForm = () => {
 
   const handleSubmit = (event: SubmitEvent) => {
     event.preventDefault()
-    if (habitName.trim() === '') return; 
+    if (habitName.trim() === '') return;
+    
+    setHabitName('')
     console.log(habitName)
   }
 
