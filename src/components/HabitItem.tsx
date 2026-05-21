@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 type HabitItemProps = {
   id: string;
   name: string;
@@ -8,8 +10,11 @@ const HabitItem = ({ habit }: HabitItemProps) => {
     <>
       <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <span className="font-medium">{habit.name}</span>
-          <span className="font-sm text-amber-400">🔥 3</span>
+          <div className="flex gap-3 items-center">
+            <span className="font-medium">{habit.name}</span>
+            <span className="font-sm text-amber-400">🔥 3</span>
+          </div>
+          <Button text="Delete"/>
         </div>
       </div>
     </>
