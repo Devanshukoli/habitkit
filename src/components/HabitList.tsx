@@ -1,11 +1,16 @@
 import HabitItem from "../components/HabitItem";
 
-const HabitList = () => {
-  const habits = [
-    { id: 1, name: "dev" },
-    { id: 2, name: "kp" },
-  ];
+export type Habit = {
+  id: string,
+  name: string
+}
 
+type HabitListProps = {
+  habits : Habit[]
+}
+
+const HabitList = ({ habits }: HabitListProps) => {
+  
   if (habits.length === 0) {
     return (
       <>
@@ -18,9 +23,11 @@ const HabitList = () => {
 
   return (
     <>
-      {habits.map((habit) => (
-        <HabitItem key={habit.id} habit={habit} />
-      ))}
+      <div className="flex flex-col gap-3">
+        {habits.map((habit) => (
+          <HabitItem key={habit.id} habit={habit} />
+        ))}
+      </div>
     </>
   );
 };
