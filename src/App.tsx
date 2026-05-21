@@ -8,7 +8,7 @@ export default function App() {
 
   const addHabit = (name: string) => {
   
-    setHabits(name)
+    setHabits([...habits, {id: crypto.randomUUID(), name}])
   }
 
   return (

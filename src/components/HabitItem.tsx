@@ -6,7 +6,7 @@ export type HabitItemProps = {
   name: string;
 };
 
-const HabitItem = ({ habit }: HabitItemProps) => {
+const HabitItem = ({habit}: HabitItemProps) => {
   const visibleDate = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), {weekStartsOn: 1}),
