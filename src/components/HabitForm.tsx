@@ -1,7 +1,11 @@
 import { useState, type SubmitEvent } from "react";
 import Button from "./Button";
 
-const HabitForm = () => {
+type AddHabitFormProps = {
+  addHabit: (name: string) => void;
+}
+
+const HabitForm = ({addHabit }: AddHabitFormProps) => {
   const [habitName, setHabitName] = useState("");
 
   const handleChange = (event) => {
@@ -13,6 +17,8 @@ const HabitForm = () => {
     if (habitName.trim() === '') return;
     
     setHabitName('')
+
+    addHabit(habitName)
     console.log(habitName)
   }
 
