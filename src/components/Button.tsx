@@ -6,12 +6,16 @@ type ButtonProps = {
   variant?: Variant;
 } & ComponentProps<"button">;
 
-export default function Button({ variant = "primary", ...props }: ButtonProps) {
+export default function Button({
+  variant = "primary",
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <>
       <button
         {...props}
-        className={`${getVariantStyles(variant)}transition-colors rounded px-2 py-1 disabled:opacity-30 disabled:cursor-not-allowed`}
+        className={`${getVariantStyles(variant)}transition-colors rounded px-2 py-1 disabled:opacity-30 disabled:cursor-not-allowed ${className}`}
       />
     </>
   );
@@ -26,6 +30,6 @@ function getVariantStyles(variant: Variant) {
     case "ghost-destructive":
       return "hover:bg-red-800 text-red-800 hover:text-red-200";
     default:
-      throw new Error(`Invalid vairant ${variant satisfies Variant}`);
+      throw new Error(`Invalid vairant ${variant satisfies never}`);
   }
 }
