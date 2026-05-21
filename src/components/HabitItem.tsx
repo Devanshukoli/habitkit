@@ -1,4 +1,5 @@
 import Button from "./Button";
+import { eachDayOfInterval, endOfWeek, format, startOfWeek } from "date-fns";
 
 type HabitItemProps = {
   id: string;
@@ -6,7 +7,10 @@ type HabitItemProps = {
 };
 
 const HabitItem = ({ habit }: HabitItemProps) => {
-  const visibleDate = [new Date()]
+  const visibleDate = eachDayOfInterval({
+    start: startOfWeek(new Date()),
+    end: endOfWeek(new Date()),
+  });
 
   return (
     <>
@@ -19,12 +23,12 @@ const HabitItem = ({ habit }: HabitItemProps) => {
           <Button>Delete</Button>
         </div>
         <div className="flex gap-1.5">
-          {visibleDate.map(date => (
+          {visibleDate.map((date) => (
             <Button key={date.toISOString()}>
-              <span className="font-medium">Mon</span>  
-              <span>2</span>  
+              <span className="font-medium">{format(date, "EEE")}</span>
+              <span>{format(date, "d")}</span>
             </Button>
-            ))}
+          ))}
         </div>
       </div>
     </>
