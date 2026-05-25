@@ -1,16 +1,10 @@
 import { useState, type SubmitEvent } from "react";
 import Button from "./Button";
+import { useHabits } from "../context/HabitProvider";
 
-type AddHabitFormProps = {
-  addHabit: (name: string) => void;
-}
-
-const HabitForm = ({addHabit }: AddHabitFormProps) => {
+const HabitForm = () => {
   const [habitName, setHabitName] = useState("");
-
-  const handleChange = (event) => {
-    setHabitName(event.target.value);
-  };
+  const {addHabit} = useHabits()
 
   const handleSubmit = (event: SubmitEvent) => {
     event.preventDefault()
@@ -27,7 +21,7 @@ const HabitForm = ({addHabit }: AddHabitFormProps) => {
       <form className="flex gap-2" onSubmit={handleSubmit}>
         <input
           value={habitName}
-          onChange={handleChange}
+          onChange={(e) => setHabitName(e.target.value)}
           className="flex-1 rounded-lg bg-zinc-800 px-4 py-2 outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
           placeholder="New Habit..."
         />

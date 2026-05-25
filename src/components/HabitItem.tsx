@@ -22,6 +22,7 @@ export type HabitItemProps = {
 
 
 const HabitItem = ({ habit, deleteHabit, toggleHabit }: HabitItemProps) => {
+
   const visibleDate = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), {weekStartsOn: 1}),

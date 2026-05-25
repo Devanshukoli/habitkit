@@ -1,4 +1,5 @@
 import HabitItem from "../components/HabitItem";
+import { useHabits } from "../context/HabitProvider";
 
 export type Habit = {
   id: string,
@@ -6,14 +7,10 @@ export type Habit = {
   completions: Date[]
 }
 
-type HabitListProps = {
-  habits: Habit[],
-  deleteHabit: (id: string) => void;
-  toggleHabit: (id: string, date: Date) => void
-}
-
-const HabitList = ({ habits, deleteHabit, toggleHabit }: HabitListProps) => {
+const HabitList = () => {
   
+  const { habits, toggleHabit, deleteHabit } = useHabits()
+
   if (habits.length === 0) {
     return (
       <>
