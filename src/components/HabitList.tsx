@@ -1,14 +1,17 @@
 import HabitItem from "../components/HabitItem";
 import { useHabits } from "../context/useHabits";
 
-
 export type Habit = {
   id: string,
   name: string,
   completions: Date[]
 }
 
-const HabitList = () => {
+type HabitListProps = {
+  visibleDates : Date[]
+}
+
+const HabitList = ({visibleDates}: HabitListProps) => {
   
   const { habits, toggleHabit, deleteHabit } = useHabits()
 
@@ -30,7 +33,9 @@ const HabitList = () => {
             deleteHabit={deleteHabit}
             toggleHabit={toggleHabit}
             key={habit.id}
-            habit={habit} />
+            habit={habit}
+            visibleDates={visibleDates}
+          />
         ))}
       </div>
     </>

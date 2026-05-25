@@ -3,10 +3,12 @@ import { useHabits } from "../context/useHabits";
 import { format, isToday } from "date-fns";
 
 type HeaderProps = {
-  visibleDates: Date[]
+  visibleDates: Date[],
+  onPrev: () => void
+  onNext: () => void
 }
 
-const Header = ({visibleDates}: HeaderProps) => {
+const Header = ({visibleDates, onPrev, onNext}: HeaderProps) => {
 
   const { habits } = useHabits()
 
@@ -26,8 +28,8 @@ const Header = ({visibleDates}: HeaderProps) => {
             {dateRange}
           </span>
           <div className="flex items-center gap-3">
-            <Button>Prev</Button>
-            <Button>Next</Button>
+            <Button onClick={onPrev}>Prev</Button>
+            <Button onClick={onNext} disabled={visibleDates.some(d => isToday(d))}>Next</Button>
           </div>
         </div>
       </header>

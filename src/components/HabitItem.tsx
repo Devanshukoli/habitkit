@@ -1,11 +1,12 @@
 import Button from "./Button";
-import { eachDayOfInterval, endOfWeek, format, isFuture, isSameDay, startOfWeek, subDays } from "date-fns";
+import { format, isFuture, isSameDay, subDays } from "date-fns";
 import type { Habit } from "./HabitList";
 
 export type HabitItemProps = {
   habit: Habit,
   deleteHabit: (id: string) => void;
   toggleHabit: (id: string, date: Date) => void;
+  visibleDates: Date[]
 };
 
   const getStreak = (completions: Date[]) => {
@@ -21,12 +22,7 @@ export type HabitItemProps = {
   }
 
 
-const HabitItem = ({ habit, deleteHabit, toggleHabit }: HabitItemProps) => {
-
-  const visibleDate = eachDayOfInterval({
-    start: startOfWeek(new Date(), { weekStartsOn: 1 }),
-    end: endOfWeek(new Date(), {weekStartsOn: 1}),
-  });
+const HabitItem = ({ habit, deleteHabit, toggleHabit, visibleDates }: HabitItemProps) => {
 
   const streak = getStreak(habit.completions)
 
@@ -43,7 +39,7 @@ const HabitItem = ({ habit, deleteHabit, toggleHabit }: HabitItemProps) => {
           <Button onClick={() => deleteHabit(habit.id)} variant="ghost-destructive" className="text-sm">Delete</Button>
         </div>
         <div className="flex gap-1.5">
-          {visibleDate.map((date) => (
+          {visibleDates.map((date) => (
             <Button
               className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs"
               key={date.toISOString()}
