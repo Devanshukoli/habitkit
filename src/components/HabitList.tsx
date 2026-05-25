@@ -1,5 +1,6 @@
 import HabitItem from "../components/HabitItem";
-import { useHabits } from "../context/HabitProvider";
+import { useHabits } from "../context/useHabits";
+
 
 export type Habit = {
   id: string,
