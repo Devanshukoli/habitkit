@@ -5,9 +5,10 @@ import type { Habit } from "./HabitList";
 export type HabitItemProps = {
   habit: Habit,
   deleteHabit: (id: string) => void;
+  toggleHabit: (id: string, date: Date) => void;
 };
 
-const HabitItem = ({ habit, deleteHabit }: HabitItemProps) => {
+const HabitItem = ({ habit, deleteHabit, toggleHabit }: HabitItemProps) => {
   const visibleDate = eachDayOfInterval({
     start: startOfWeek(new Date(), { weekStartsOn: 1 }),
     end: endOfWeek(new Date(), {weekStartsOn: 1}),
@@ -29,6 +30,7 @@ const HabitItem = ({ habit, deleteHabit }: HabitItemProps) => {
               className="flex flex-1 flex-col items-center gap-0.5 rounded-lg text-xs"
               key={date.toISOString()}
               disabled={isFuture(date)}
+              onClick={() => toggleHabit(habit.id, date)}
               variant={ habit.completions.some(d => isSameDay(date, d)) ? "primary" : "secondary"}
             >
               <span className="font-medium">{format(date, "EEE")}</span>
