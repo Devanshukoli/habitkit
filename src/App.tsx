@@ -7,7 +7,10 @@ export default function App() {
   const [habits, setHabits] = useState<Habit[]>([]);
 
   const addHabit = (name: string) => {
-    setHabits(current => [...current, {id: crypto.randomUUID(), name}])
+    setHabits(current => [
+      ...current,
+      { id: crypto.randomUUID(), name, completions: [] }
+    ])
   }
 
   const deleteHabit = (id: string) => {
@@ -18,7 +21,7 @@ export default function App() {
     <>
       <div className="max-w-2xl mx-auto p-4 flex flex-col gap-4">
         <Header />
-        <HabitForm addHabit={addHabit} />
+        <HabitForm addHabit={addHabit} /> 
         <HabitList habits={habits}  deleteHabit={ deleteHabit}/>
       </div>
     </>
