@@ -2,7 +2,7 @@ import { useState } from "react";
 import HabitForm from "./components/HabitForm";
 import HabitList, { type Habit } from "./components/HabitList";
 import Header from "./components/Header";
-import { isSameDay } from "date-fns";
+import { isSameDay, subDays } from "date-fns";
 
 export default function App() {
   const [habits, setHabits] = useState<Habit[]>([]);
